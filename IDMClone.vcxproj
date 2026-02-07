@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  IDMClone.vcxproj - Visual Studio 2022 Project File
+  
+  Internet Download Manager Clone - Production-quality download manager
+  Built with C++17, Win32 API, MFC (shared DLL)
+  
+  Configurations: Debug/Release x Win32/x64
+  Target: Windows 7+ (WINVER=0x0601)
+  
+  Dependencies (all via Windows SDK - no external libraries needed):
+    - WinHTTP (HTTP/HTTPS client)
+    - WinINet (FTP, cookie import)
+    - BCrypt  (hash computation)
+    - MFC     (UI framework)
+-->
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!--  PROJECT CONFIGURATIONS                                                -->
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!--  GLOBAL PROJECT SETTINGS                                               -->
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>MFCProj</Keyword>
+    <ProjectGuid>{4C5E5620-23EA-59E1-A39F-FC627EDEC6E9}</ProjectGuid>
+    <RootNamespace>IDMClone</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>IDMClone</ProjectName>
+  </PropertyGroup>
+
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!--  CONFIGURATION PROPERTIES                                              -->
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+
+  <!-- Debug Win32 -->
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+
+  <!-- Release Win32 -->
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+
+  <!-- Debug x64 -->
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+
+  <!-- Release x64 -->
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+
+  <!-- Property sheets for each configuration -->
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+
+  <PropertyGroup Label="UserMacros" />
+
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!--  OUTPUT DIRECTORIES                                                    -->
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+
+  <!-- Debug Win32 -->
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)obj\$(Platform)\$(Configuration)\</IntDir>
+    <TargetName>IDMClone</TargetName>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+
+  <!-- Release Win32 -->
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)obj\$(Platform)\$(Configuration)\</IntDir>
+    <TargetName>IDMClone</TargetName>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+
+  <!-- Debug x64 -->
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)obj\$(Platform)\$(Configuration)\</IntDir>
+    <TargetName>IDMClone</TargetName>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+
+  <!-- Release x64 -->
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)obj\$(Platform)\$(Configuration)\</IntDir>
+    <TargetName>IDMClone</TargetName>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!--  COMPILER SETTINGS - DEBUG WIN32                                       -->
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <WarningLevel>Level4</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;UNICODE;_UNICODE;WINVER=0x0601;_WIN32_WINNT=0x0601;_WIN32_IE=0x0A00;_AFXDLL;_ATL_CSTRING_EXPLICIT_CONSTRUCTORS;_CRT_SECURE_NO_WARNINGS;_WINSOCK_DEPRECATED_NO_WARNINGS;IDM_VERSION_MAJOR=6;IDM_VERSION_MINOR=42;IDM_VERSION_PATCH=1;IDM_VERSION_STRING="6.42 Build 1";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir)src;$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <Optimization>Disabled</Optimization>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>ws2_32.lib;winhttp.lib;wininet.lib;crypt32.lib;bcrypt.lib;shlwapi.lib;comctl32.lib;uxtheme.lib;dwmapi.lib;winmm.lib;version.lib;ole32.lib;oleaut32.lib;uuid.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <EntryPointSymbol>wWinMainCRTStartup</EntryPointSymbol>
+    </Link>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!--  COMPILER SETTINGS - RELEASE WIN32                                     -->
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <WarningLevel>Level4</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;UNICODE;_UNICODE;WINVER=0x0601;_WIN32_WINNT=0x0601;_WIN32_IE=0x0A00;_AFXDLL;_ATL_CSTRING_EXPLICIT_CONSTRUCTORS;_CRT_SECURE_NO_WARNINGS;_WINSOCK_DEPRECATED_NO_WARNINGS;IDM_VERSION_MAJOR=6;IDM_VERSION_MINOR=42;IDM_VERSION_PATCH=1;IDM_VERSION_STRING="6.42 Build 1";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir)src;$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <StringPooling>true</StringPooling>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+      <AdditionalDependencies>ws2_32.lib;winhttp.lib;wininet.lib;crypt32.lib;bcrypt.lib;shlwapi.lib;comctl32.lib;uxtheme.lib;dwmapi.lib;winmm.lib;version.lib;ole32.lib;oleaut32.lib;uuid.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <EntryPointSymbol>wWinMainCRTStartup</EntryPointSymbol>
+    </Link>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!--  COMPILER SETTINGS - DEBUG X64                                         -->
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <WarningLevel>Level4</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_WINDOWS;_DEBUG;UNICODE;_UNICODE;WINVER=0x0601;_WIN32_WINNT=0x0601;_WIN32_IE=0x0A00;_AFXDLL;_ATL_CSTRING_EXPLICIT_CONSTRUCTORS;_CRT_SECURE_NO_WARNINGS;_WINSOCK_DEPRECATED_NO_WARNINGS;IDM_VERSION_MAJOR=6;IDM_VERSION_MINOR=42;IDM_VERSION_PATCH=1;IDM_VERSION_STRING="6.42 Build 1";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir)src;$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <Optimization>Disabled</Optimization>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>ws2_32.lib;winhttp.lib;wininet.lib;crypt32.lib;bcrypt.lib;shlwapi.lib;comctl32.lib;uxtheme.lib;dwmapi.lib;winmm.lib;version.lib;ole32.lib;oleaut32.lib;uuid.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <EntryPointSymbol>wWinMainCRTStartup</EntryPointSymbol>
+    </Link>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!--  COMPILER SETTINGS - RELEASE X64                                       -->
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <WarningLevel>Level4</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_WINDOWS;NDEBUG;UNICODE;_UNICODE;WINVER=0x0601;_WIN32_WINNT=0x0601;_WIN32_IE=0x0A00;_AFXDLL;_ATL_CSTRING_EXPLICIT_CONSTRUCTORS;_CRT_SECURE_NO_WARNINGS;_WINSOCK_DEPRECATED_NO_WARNINGS;IDM_VERSION_MAJOR=6;IDM_VERSION_MINOR=42;IDM_VERSION_PATCH=1;IDM_VERSION_STRING="6.42 Build 1";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir)src;$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <StringPooling>true</StringPooling>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+      <AdditionalDependencies>ws2_32.lib;winhttp.lib;wininet.lib;crypt32.lib;bcrypt.lib;shlwapi.lib;comctl32.lib;uxtheme.lib;dwmapi.lib;winmm.lib;version.lib;ole32.lib;oleaut32.lib;uuid.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <EntryPointSymbol>wWinMainCRTStartup</EntryPointSymbol>
+    </Link>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!--  SOURCE FILES                                                          -->
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+
+  <!-- C++ Source Files -->
+  <ItemGroup>
+    <!-- Precompiled Header Source (must use /Yc to create PCH) -->
+    <ClCompile Include="src\stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+
+    <!-- Application Entry Point -->
+    <ClCompile Include="src\IDMApp.cpp" />
+
+    <!-- Core Engine -->
+    <ClCompile Include="src\core\HttpClient.cpp" />
+    <ClCompile Include="src\core\FtpClient.cpp" />
+    <ClCompile Include="src\core\SegmentManager.cpp" />
+    <ClCompile Include="src\core\ResumeEngine.cpp" />
+    <ClCompile Include="src\core\FileAssembler.cpp" />
+    <ClCompile Include="src\core\ConnectionPool.cpp" />
+    <ClCompile Include="src\core\ProxyManager.cpp" />
+    <ClCompile Include="src\core\AuthManager.cpp" />
+    <ClCompile Include="src\core\CookieJar.cpp" />
+    <ClCompile Include="src\core\SpeedLimiter.cpp" />
+    <ClCompile Include="src\core\DownloadEngine.cpp" />
+
+    <!-- User Interface -->
+    <ClCompile Include="src\ui\MainFrame.cpp" />
+    <ClCompile Include="src\ui\DownloadListView.cpp" />
+    <ClCompile Include="src\ui\CategoryTreeView.cpp" />
+    <ClCompile Include="src\ui\ProgressDialog.cpp" />
+    <ClCompile Include="src\ui\AddUrlDialog.cpp" />
+    <ClCompile Include="src\ui\OptionsDialog.cpp" />
+    <ClCompile Include="src\ui\SchedulerDialog.cpp" />
+    <ClCompile Include="src\ui\BatchDownloadDialog.cpp" />
+    <ClCompile Include="src\ui\SegmentBar.cpp" />
+    <ClCompile Include="src\ui\SpeedGraph.cpp" />
+    <ClCompile Include="src\ui\SkinManager.cpp" />
+    <ClCompile Include="src\ui\GrabberDialog.cpp" />
+
+    <!-- Browser Integration -->
+    <ClCompile Include="src\browser\NativeMessaging.cpp" />
+    <ClCompile Include="src\browser\ComServer.cpp" />
+    <ClCompile Include="src\browser\VideoDetector.cpp" />
+    <ClCompile Include="src\browser\BrowserMonitor.cpp" />
+
+    <!-- Utilities -->
+    <ClCompile Include="src\util\Logger.cpp" />
+    <ClCompile Include="src\util\Database.cpp" />
+    <ClCompile Include="src\util\Registry.cpp" />
+    <ClCompile Include="src\util\Crypto.cpp" />
+    <ClCompile Include="src\util\Unicode.cpp" />
+  </ItemGroup>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!--  HEADER FILES                                                          -->
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <ItemGroup>
+    <!-- Precompiled / Global Headers -->
+    <ClInclude Include="src\stdafx.h" />
+    <ClInclude Include="src\targetver.h" />
+    <ClInclude Include="src\resource.h" />
+    <ClInclude Include="src\IDMApp.h" />
+
+    <!-- Core Engine Headers -->
+    <ClInclude Include="src\core\HttpClient.h" />
+    <ClInclude Include="src\core\FtpClient.h" />
+    <ClInclude Include="src\core\SegmentManager.h" />
+    <ClInclude Include="src\core\ResumeEngine.h" />
+    <ClInclude Include="src\core\FileAssembler.h" />
+    <ClInclude Include="src\core\ConnectionPool.h" />
+    <ClInclude Include="src\core\ProxyManager.h" />
+    <ClInclude Include="src\core\AuthManager.h" />
+    <ClInclude Include="src\core\CookieJar.h" />
+    <ClInclude Include="src\core\SpeedLimiter.h" />
+    <ClInclude Include="src\core\DownloadEngine.h" />
+
+    <!-- UI Headers -->
+    <ClInclude Include="src\ui\MainFrame.h" />
+    <ClInclude Include="src\ui\DownloadListView.h" />
+    <ClInclude Include="src\ui\CategoryTreeView.h" />
+    <ClInclude Include="src\ui\ProgressDialog.h" />
+    <ClInclude Include="src\ui\AddUrlDialog.h" />
+    <ClInclude Include="src\ui\OptionsDialog.h" />
+    <ClInclude Include="src\ui\SchedulerDialog.h" />
+    <ClInclude Include="src\ui\BatchDownloadDialog.h" />
+    <ClInclude Include="src\ui\SegmentBar.h" />
+    <ClInclude Include="src\ui\SpeedGraph.h" />
+    <ClInclude Include="src\ui\SkinManager.h" />
+    <ClInclude Include="src\ui\GrabberDialog.h" />
+
+    <!-- Browser Integration Headers -->
+    <ClInclude Include="src\browser\NativeMessaging.h" />
+    <ClInclude Include="src\browser\ComServer.h" />
+    <ClInclude Include="src\browser\VideoDetector.h" />
+    <ClInclude Include="src\browser\BrowserMonitor.h" />
+
+    <!-- Utility Headers -->
+    <ClInclude Include="src\util\Logger.h" />
+    <ClInclude Include="src\util\Database.h" />
+    <ClInclude Include="src\util\Registry.h" />
+    <ClInclude Include="src\util\Crypto.h" />
+    <ClInclude Include="src\util\Unicode.h" />
+  </ItemGroup>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!--  RESOURCE FILES                                                        -->
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <ItemGroup>
+    <ResourceCompile Include="src\resources\IDM.rc" />
+  </ItemGroup>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!--  MISCELLANEOUS FILES (included in solution view but not compiled)       -->
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <ItemGroup>
+    <None Include="src\resources\IDMClone.manifest" />
+    <None Include="src\resources\icons\app.ico" />
+    <None Include="src\extension\manifest.json" />
+    <None Include="src\extension\background.js" />
+    <None Include="src\extension\content.js" />
+    <None Include="src\extension\popup.html" />
+    <None Include="src\extension\popup.js" />
+    <None Include="src\extension\video_detector.js" />
+    <None Include="CMakeLists.txt" />
+    <None Include="BUILD.md" />
+    <None Include="README.md" />
+  </ItemGroup>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!--  SOLUTION FILTERS (for VS Solution Explorer grouping)                  -->
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!--  POST-BUILD: COPY BROWSER EXTENSION FILES                              -->
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <ItemDefinitionGroup>
+    <PostBuildEvent>
+      <Command>
+if not exist "$(OutDir)extension" mkdir "$(OutDir)extension"
+xcopy /Y /Q "$(ProjectDir)src\extension\*.*" "$(OutDir)extension\"
+      </Command>
+      <Message>Copying browser extension files to output directory...</Message>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+
+</Project>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>IDM Clone</title>
+    <style>
+        body {
+            width: 320px;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            margin: 0;
+            padding: 16px;
+            background: #1e1e2e;
+            color: #cdd6f4;
+        }
+        h2 {
+            margin: 0 0 12px 0;
+            font-size: 16px;
+            color: #89b4fa;
+        }
+        .status {
+            padding: 8px 12px;
+            background: #313244;
+            border-radius: 6px;
+            margin-bottom: 12px;
+            font-size: 13px;
+        }
+        .status.connected { border-left: 3px solid #a6e3a1; }
+        .status.disconnected { border-left: 3px solid #f38ba8; }
+        .stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .stat {
+            background: #313244;
+            padding: 8px;
+            border-radius: 6px;
+            text-align: center;
+        }
+        .stat-value { font-size: 18px; font-weight: bold; color: #89b4fa; }
+        .stat-label { font-size: 11px; color: #6c7086; }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #89b4fa;
+            color: #1e1e2e;
+            border: none;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 6px;
+        }
+        button:hover { background: #74c7ec; }
+        .footer { font-size: 11px; color: #585b70; text-align: center; margin-top: 8px; }
+    </style>
+</head>
+<body>
+    <h2>&#x2B07; IDM Clone</h2>
+    
+    <div class="status connected" id="status">
+        Connected to IDM Clone
+    </div>
+    
+    <div class="stats">
+        <div class="stat">
+            <div class="stat-value" id="activeCount">0</div>
+            <div class="stat-label">Active</div>
+        </div>
+        <div class="stat">
+            <div class="stat-value" id="totalSpeed">0 B/s</div>
+            <div class="stat-label">Speed</div>
+        </div>
+    </div>
+    
+    <button id="addUrlBtn">Add URL...</button>
+    <button id="openIdmBtn" style="background: #313244; color: #cdd6f4;">
+        Open IDM Clone
+    </button>
+    
+    <div class="footer">
+        IDM Clone v6.42 - Internet Download Manager
+    </div>
+    
+    <script src="popup.js"></script>
+</body>
+</html>

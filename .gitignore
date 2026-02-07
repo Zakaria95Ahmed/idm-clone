@@ -1,0 +1,58 @@
+# ============================================================================
+# IDM Clone - Git Ignore Rules
+# ============================================================================
+
+# Visual Studio build output
+bin/
+obj/
+build/
+build-*/
+x64/
+Debug/
+Release/
+
+# Visual Studio temporary files
+*.user
+*.suo
+*.sdf
+*.opensdf
+*.VC.db
+*.VC.opendb
+.vs/
+*.ipch
+ipch/
+*.ncb
+*.aps
+
+# Precompiled headers
+*.pch
+*.pdb
+*.ilk
+*.exp
+*.lib
+*.obj
+
+# CMake generated files
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+
+# NuGet packages
+packages/
+
+# OS files
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Compiled executables
+*.exe
+*.dll
+
+# IDE specific
+.idea/
+.vscode/
+
+# Logs
+*.log
