@@ -22,6 +22,14 @@
 
 #pragma once
 
+// ─── Prevent Windows.h min/max macros ──────────────────────────────────────
+// NOMINMAX MUST be defined before any Windows header is included.
+// Windows.h defines min/max macros that conflict with std::min/std::max
+// and std::numeric_limits<T>::max(), causing C2589/C2059 compile errors.
+#ifndef NOMINMAX
+#define NOMINMAX
+#endif
+
 // ─── Reduce Windows header bloat ────────────────────────────────────────────
 // VC_EXTRALEAN reduces MFC header inclusions (safe with MFC)
 // NOTE: WIN32_LEAN_AND_MEAN is NOT used here because it conflicts with MFC's

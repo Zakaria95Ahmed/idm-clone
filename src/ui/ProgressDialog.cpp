@@ -232,7 +232,7 @@ void CProgressDialog::OnDownloadComplete(const String& id) {
     }
 }
 
-void CProgressDialog::OnDownloadError(const String& id, const String& error) {
+void CProgressDialog::OnDownloadError(const String& id, const String& /*error*/) {
     if (id == m_entry.id) {
         PostMessage(WM_TIMER, TIMER_UPDATE, 0);
     }

@@ -769,16 +769,16 @@ BOOL CMainFrame::OnCmdMsg(UINT nID, int nCode, void* pExtra,
 }
 
 // ─── Observer Callbacks (called from download threads) ─────────────────────
-void CMainFrame::OnDownloadAdded(const String& id) {
+void CMainFrame::OnDownloadAdded(const String& /*id*/) {
     PostMessage(WM_APP_REFRESH_LIST, 0, 0);
 }
 
-void CMainFrame::OnDownloadStarted(const String& id) {
+void CMainFrame::OnDownloadStarted(const String& /*id*/) {
     PostMessage(WM_APP_REFRESH_LIST, 0, 0);
 }
 
-void CMainFrame::OnDownloadProgress(const String& id, int64 downloaded, 
-                                     int64 total, double speed) {
+void CMainFrame::OnDownloadProgress(const String& /*id*/, int64 /*downloaded*/, 
+                                     int64 /*total*/, double /*speed*/) {
     // Post message to UI thread for safe update
     PostMessage(WM_APP_DOWNLOAD_PROGRESS, 0, 0);
 }
@@ -793,15 +793,15 @@ void CMainFrame::OnDownloadComplete(const String& id) {
     }
 }
 
-void CMainFrame::OnDownloadError(const String& id, const String& error) {
+void CMainFrame::OnDownloadError(const String& /*id*/, const String& /*error*/) {
     PostMessage(WM_APP_REFRESH_LIST, 0, 0);
 }
 
-void CMainFrame::OnDownloadPaused(const String& id) {
+void CMainFrame::OnDownloadPaused(const String& /*id*/) {
     PostMessage(WM_APP_REFRESH_LIST, 0, 0);
 }
 
-void CMainFrame::OnDownloadRemoved(const String& id) {
+void CMainFrame::OnDownloadRemoved(const String& /*id*/) {
     PostMessage(WM_APP_REFRESH_LIST, 0, 0);
 }
 

@@ -312,7 +312,7 @@ void DownloadEngine::DownloadWorker(const String& id) {
     
     // Phase 4: Launch connection threads
     int numConnections = entry.resumeSupported ? 
-        std::min(entry.numConnections, constants::MAX_CONNECTIONS) : 1;
+        (std::min)(entry.numConnections, constants::MAX_CONNECTIONS) : 1;
     
     LOG_INFO(L"DownloadEngine: starting %d connections for %s (%s bytes)",
              numConnections, entry.fileName.c_str(),

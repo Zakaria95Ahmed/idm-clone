@@ -54,9 +54,9 @@ void CSegmentBar::OnPaint() {
             int downloadedPx = static_cast<int>(seg.currentPos * pixelsPerByte);
             
             // Clamp to rect
-            segStartPx = std::clamp(segStartPx, 0, rect.Width());
-            segEndPx = std::clamp(segEndPx, 0, rect.Width());
-            downloadedPx = std::clamp(downloadedPx, segStartPx, segEndPx);
+            segStartPx = (std::clamp)(segStartPx, 0, rect.Width());
+            segEndPx = (std::clamp)(segEndPx, 0, rect.Width());
+            downloadedPx = (std::clamp)(downloadedPx, segStartPx, segEndPx);
             
             // Draw downloaded portion (blue)
             if (downloadedPx > segStartPx) {

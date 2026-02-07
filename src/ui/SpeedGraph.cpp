@@ -109,7 +109,7 @@ void CSpeedGraph::OnPaint() {
             int x = drawLeft + static_cast<int>((startIdx + i) * xStep);
             int y = drawTop + drawHeight - 
                     static_cast<int>(m_dataPoints[i] / m_maxSpeed * drawHeight);
-            y = std::clamp(y, drawTop, drawTop + drawHeight);
+            y = (std::clamp)(y, drawTop, drawTop + drawHeight);
             fillPoints.push_back(CPoint(x, y));
         }
         
@@ -130,7 +130,7 @@ void CSpeedGraph::OnPaint() {
             int x = drawLeft + static_cast<int>((startIdx + i) * xStep);
             int y = drawTop + drawHeight - 
                     static_cast<int>(m_dataPoints[i] / m_maxSpeed * drawHeight);
-            y = std::clamp(y, drawTop, drawTop + drawHeight);
+            y = (std::clamp)(y, drawTop, drawTop + drawHeight);
             
             if (i == 0) memDC.MoveTo(x, y);
             else memDC.LineTo(x, y);

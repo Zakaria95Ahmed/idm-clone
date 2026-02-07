@@ -94,7 +94,8 @@ jobs:
             /p:Platform=${{ matrix.platform }} ^
             /m ^
             /verbosity:minimal ^
-            /p:WarningLevel=3
+            /p:WarningLevel=3 ^
+            /p:TreatWarningAsError=false
 
       # ── Verify Output ────────────────────────────────────────────────────
       - name: Verify build output

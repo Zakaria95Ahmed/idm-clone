@@ -115,7 +115,7 @@ int ResumeEngine::GetRetryDelay(int retryCount, int baseDelaySec) {
     for (int i = 1; i < retryCount && i < 8; ++i) {
         delay *= 2;
     }
-    return std::min(delay, 300);
+    return (std::min)(delay, 300);
 }
 
 bool ResumeEngine::ShouldRetry(DWORD errorCode, int httpStatusCode) {

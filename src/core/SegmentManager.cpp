@@ -299,7 +299,7 @@ int SegmentManager::GetSegmentCount() const {
 
 void SegmentManager::SetMaxConnections(int maxConn) {
     RecursiveLock lock(m_mutex);
-    m_maxConnections = std::clamp(maxConn, constants::MIN_CONNECTIONS, constants::MAX_CONNECTIONS);
+    m_maxConnections = (std::clamp)(maxConn, constants::MIN_CONNECTIONS, constants::MAX_CONNECTIONS);
 }
 
 int SegmentManager::GetMaxConnections() const {
@@ -473,7 +473,7 @@ bool SegmentManager::LoadStateFromFile(const String& filePath) {
             }
             
             m_segments.push_back(seg);
-            m_nextSegmentId = std::max(m_nextSegmentId, seg.id + 1);
+            m_nextSegmentId = (std::max)(m_nextSegmentId, seg.id + 1);
         }
         
         LOG_INFO(L"SegmentManager: loaded %u segments from state file", segCount);

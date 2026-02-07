@@ -24,18 +24,18 @@ class IDownloadObserver {
 public:
     virtual ~IDownloadObserver() = default;
     
-    virtual void OnDownloadAdded(const String& id) {}
-    virtual void OnDownloadStarted(const String& id) {}
-    virtual void OnDownloadProgress(const String& id, int64 downloaded, 
-                                     int64 total, double speed) {}
-    virtual void OnDownloadSegmentUpdate(const String& id, 
-                                          const std::vector<Segment>& segments) {}
-    virtual void OnDownloadComplete(const String& id) {}
-    virtual void OnDownloadError(const String& id, const String& error) {}
-    virtual void OnDownloadPaused(const String& id) {}
-    virtual void OnDownloadResumed(const String& id) {}
-    virtual void OnDownloadRemoved(const String& id) {}
-    virtual void OnSpeedUpdate(double totalSpeed, int activeCount) {}
+    virtual void OnDownloadAdded(const String& /*id*/) {}
+    virtual void OnDownloadStarted(const String& /*id*/) {}
+    virtual void OnDownloadProgress(const String& /*id*/, int64 /*downloaded*/, 
+                                     int64 /*total*/, double /*speed*/) {}
+    virtual void OnDownloadSegmentUpdate(const String& /*id*/, 
+                                          const std::vector<Segment>& /*segments*/) {}
+    virtual void OnDownloadComplete(const String& /*id*/) {}
+    virtual void OnDownloadError(const String& /*id*/, const String& /*error*/) {}
+    virtual void OnDownloadPaused(const String& /*id*/) {}
+    virtual void OnDownloadResumed(const String& /*id*/) {}
+    virtual void OnDownloadRemoved(const String& /*id*/) {}
+    virtual void OnSpeedUpdate(double /*totalSpeed*/, int /*activeCount*/) {}
 };
 
 // ─── Active Download State ─────────────────────────────────────────────────

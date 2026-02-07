@@ -309,7 +309,10 @@
 
 // --- View Menu ---
 #define ID_VIEW_CATEGORIES          3500
+// ID_VIEW_TOOLBAR is already defined in afxres.h (MFC); guard to prevent C4005
+#ifndef ID_VIEW_TOOLBAR
 #define ID_VIEW_TOOLBAR             3501
+#endif
 #define ID_VIEW_COLUMNS             3502
 #define ID_VIEW_TOOLBAR_LARGE3D     3503
 #define ID_VIEW_TOOLBAR_SMALL3D     3504

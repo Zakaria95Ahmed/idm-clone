@@ -33,6 +33,9 @@ if(WIN32)
     # Unicode build (matching IDM's Unicode support)
     add_definitions(-DUNICODE -D_UNICODE)
     
+    # Prevent Windows.h min/max macros from conflicting with std::min/std::max
+    add_definitions(-DNOMINMAX)
+    
     # Windows version targeting (Windows 7+)
     add_definitions(-DWINVER=0x0601 -D_WIN32_WINNT=0x0601)
     add_definitions(-D_WIN32_IE=0x0A00)
@@ -59,7 +62,8 @@ if(MSVC)
     # /Zi = program database for debugging
     # /EHsc = C++ exception handling
     # /permissive- = strict conformance mode
-    add_compile_options(/W4 /WX- /MP /EHsc /permissive-)
+    # /wd4100 = suppress unreferenced formal parameter warnings
+    add_compile_options(/W4 /WX- /MP /EHsc /permissive- /wd4100)
     
     # Release optimizations
     set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /O2 /GL /Gy /Gw")
