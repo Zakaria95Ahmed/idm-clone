@@ -75,7 +75,7 @@ size_t SpeedLimiter::RequestBytes(size_t bytes) {
     m_tokens += sleptFor * limit;
     if (m_tokens > m_burstCapacity) m_tokens = m_burstCapacity;
     
-    size_t permitted = static_cast<size_t>((std::min)<double>(m_tokens, static_cast<double>(bytes)));
+    size_t permitted = static_cast<size_t>((std::min<double>)(m_tokens, static_cast<double>(bytes)));
     m_tokens -= static_cast<double>(permitted);
     
     return permitted > 0 ? permitted : 1;  // Always allow at least 1 byte

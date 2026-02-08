@@ -63,7 +63,7 @@ bool FileAssembler::WriteAtPosition(HANDLE hFile, int64 position,
     
     while (totalWritten < length) {
         DWORD toWrite = static_cast<DWORD>(
-            (std::min)<size_t>(length - totalWritten, 1024 * 1024));  // 1MB max per call
+            (std::min<size_t>)(length - totalWritten, 1024 * 1024));  // 1MB max per call
         
         ov.Offset = static_cast<DWORD>((position + totalWritten) & 0xFFFFFFFF);
         ov.OffsetHigh = static_cast<DWORD>((position + totalWritten) >> 32);
