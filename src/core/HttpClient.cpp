@@ -344,7 +344,7 @@ bool HttpClient::ExecuteRequest(const HttpRequestConfig& config,
             if (bytesAvailable == 0) break;  // End of data
             
             // Read in chunks up to buffer size
-            DWORD toRead = min(bytesAvailable, static_cast<DWORD>(buffer.size()));
+            DWORD toRead = (std::min)(bytesAvailable, static_cast<DWORD>(buffer.size()));
             
             if (!::WinHttpReadData(m_hRequest, buffer.data(), toRead, &bytesRead)) {
                 if (!m_cancelled.load()) {

@@ -62,8 +62,10 @@ if(MSVC)
     # /Zi = program database for debugging
     # /EHsc = C++ exception handling
     # /permissive- = strict conformance mode
+    # /wd4005 = suppress macro redefinition warnings
     # /wd4100 = suppress unreferenced formal parameter warnings
-    add_compile_options(/W4 /WX- /MP /EHsc /permissive- /wd4100)
+    # /wd4189 = suppress local variable initialized but not referenced warnings
+    add_compile_options(/W4 /WX- /MP /EHsc /permissive- /wd4005 /wd4100 /wd4189)
     
     # Release optimizations
     set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /O2 /GL /Gy /Gw")
